@@ -1,6 +1,6 @@
-<div class="content__rooms row row-cols-md  -2">
+<div class="content__rooms row row-cols-md-2">
   <div class="col-12 col-md-3">
-    <div class="row row-cols-2 g-4 mb-4">
+    <div class="row row-cols-2 g-4 h-100">
       <div class="col">
         <div
           class="content__rooms-item p-3  text-white  text-center rounded-3 d-flex flex-column justify-content-between">
@@ -95,12 +95,11 @@
     </div>
   </div>
 </div>
-<div class="content__rooms-controll row row-cols-2 mt-4">
-  <div class="col-12 col-md-9">
-    
-    <div class="content__rooms-energy row p-3 rounded-3 h-100">
+<div class="content__controll row g-4 mt-4">
+  <div class="col-12 col-lg-9 ">
+    <div class="content__controll-light content__controll-item row p-3 h-100">
       <p class="text-white">Living Room Light</p>
-      <div class="col-12 col-md-3 center content__rooms-light rounded-3 d-flex align-items-center justify-content-center">
+      <div class="col-12 col-md-3 center content__controll-lamp rounded-3 d-flex align-items-center justify-content-center">
         
         <div class="lamp-container p-3">
           <div class="lamp-svg">
@@ -135,20 +134,56 @@
       </div>
       <div class="col-12 col-md-9  d-flex justify-content-center align-items-end ">
         <div class="light-control">
+          <input type="color" value="#ff0000" id="colorWell" />
           <input type="range"  class="form-range" id="brightness-slider" min="0" max="100" value="0">
         </div>
        
       </div>
     </div>
   </div>
-  <div class="col-md-3">
-    <div class="row g-4">
-      <div class="col col-md-12">
-        <div class="content__rooms-item p-3  rounded-3"></div>
+  <div class="col-12 col-lg-3 ">
+    <div class="row h-100 ">
+      <div class="col-12 pb-2 px-0 px-lg-2">
+        <div class="content__controll-temperature content__controll-item h-100 p-3 d-flex align-items-center ">
+          <div class="content__controll-image_box d-flex justify-content-center align-items-center me-2">
+            <img class="content__controll-img" src="/assets/images/SVG/temperature.svg" alt="">
+          </div>
+          <div class="content__buttons-text">
+            <p class="text-white mb-0">Temperature</p>
+            <p class="text-white mb-0 mt-2"><span id="temperatureValue">20</span>°C</p>
+          </div>
+          <div class="content__buttons d-flex flex-column justify-content-between h-100 ms-auto">
+            <button id="temperatureIncreaseButton" class=" btn  btn-outline-primary content__buttons-up btn-sm">
+              <i class="bi bi-caret-up-fill"></i>
+            </button>
+            <button id="temperatureDecreaseButton" class="btn btn-outline-primary content__buttons-down btn-sm">
+              <i class="bi bi-caret-down-fill"></i>
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="col col-md-12">
-        <div class="content__rooms-item p-3  rounded-3"></div>
+      
+      <div class="col-12 pt-2 px-0 px-lg-2">
+        <div class="content__controll-humidity content__controll-item h-100 p-3 d-flex align-items-center">
+          <div class="content__controll-image_box d-flex justify-content-center align-items-center me-2">
+            <img class="content__controll-img" src="/assets/images/SVG/drop.svg" alt="">
+          </div>
+          <div class="content__buttons-text">
+            <p class="text-white mb-0">Humidity</p>
+            <p class="text-white mb-0 mt-2"><span id="humidityValue">20</span>%</p>
+          </div>
+          <div class="content__buttons d-flex flex-column justify-content-between  h-100 ms-auto">
+            <button id="increaseButton" class="btn  btn-outline-primary content__buttons-up btn-sm">
+              <i class="bi bi-caret-up-fill"></i>
+            </button>
+            <button id="decreaseButton" class="btn btn-outline-primary content__buttons-down btn-sm">
+              <i class="bi bi-caret-down-fill"></i>
+            </button>
+          </div>
+        </div>
       </div>
+      
     </div>
   </div>
+
 </div>

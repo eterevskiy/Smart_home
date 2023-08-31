@@ -100,6 +100,30 @@ a {
 .content {
   padding: 10px;
 
+  &__buttons{
+    &-text{
+     font-size: 0.8em;
+     
+    }
+    &-up{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      width: 2em;
+      height: 2em;
+    }
+    &-down{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      width: 2em;
+      height: 2em;
+    }
+  }
+   
+  
   &__rotate_gear {
     animation: 3s linear 0s normal none infinite running in_developing;
 
@@ -114,27 +138,23 @@ a {
 
     }
   }
-
-  &__rooms {
-    &-name {
-      font-weight: 600;
-    }
-
-    &-item {
-      font-size: 10px;
-      height: 100px;
+  &__controll{
+    &-item{
       background: #212c36;
-
-      img {
-        object-fit: contain;
-        height: 40%;
-      }
-
+      border-radius: 20px;
     }
-
-    &-light {
+    &-img{
+      object-fit: contain;
+      height: 2em;
+    }
+    &-image_box{
+      border-radius: 30%;
       background: #303c47;
-     
+      width: 3em;
+      height: 3em;
+    }
+    &-lamp {
+      background: #303c47;
       .lamp-container {
         display: flex;
         flex-direction: column;
@@ -147,13 +167,10 @@ a {
           width: 100%;
           height: 100%;
           transition: all .3s ease;
-          // position: absolute;
         }
       }
-
       .lamp-svg {
         width: 100px;
-        /* Укажите нужный размер */
         height: auto;
       }
       
@@ -161,22 +178,22 @@ a {
        
       }
     }
-   
-    // 
-    // &-light.on{
-    //   background: #303c47;
-    //   .svg-container{
-    //     svg{
-    //       .center{
-    //         fill:yellow;
-    //       }
-    //     }
-    //   }
-
-    // }
-    &-energy {
-      background: #212c36;
+  }
+  &__rooms {
+    &-name {
+      font-weight: 600;
     }
+
+    &-item {
+      font-size: 10px;
+      height:100%;
+      background: #212c36;
+
+      img {
+        object-fit: contain;
+        height: 40%;
+      }
+    } 
   }
   .light-control{
     width: 40%;

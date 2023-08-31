@@ -18,8 +18,8 @@ function handleHashChange() {
       new Chart(ctx, {
         type: 'bar',
         data: {
-          
-          labels: ['20', '21', '22', '23', '24', '25','26','27'],
+
+          labels: ['20', '21', '22', '23', '24', '25', '26', '27'],
           datasets: [{
             label: 'August',
             data: [30, 40, 50, 75, 68, 70, 90, 80],
@@ -53,13 +53,55 @@ function handleHashChange() {
       heartCenter.style.fill = yellowColor;
       brightnessSlider.addEventListener('input', () => {
         const brightnessValue = brightnessSlider.value / 100;
-        
+
         // Изменение цвета эффекта света
         const yellowColor = `rgba(255, 255, 0, ${brightnessValue})`;
         heartCenter.style.filter = `url(#glow)`;
         heartCenter.style.fill = yellowColor;
       });
-      
+      const humidityValueElement = document.getElementById("humidityValue");
+      const increaseButton = document.getElementById("increaseButton");
+      const decreaseButton = document.getElementById("decreaseButton");
+      const temperatureValueElement = document.getElementById("temperatureValue");
+      const temperatureIncreaseButton = document.getElementById("temperatureIncreaseButton");
+      const temperatureDecreaseButton = document.getElementById("temperatureDecreaseButton");
+
+      let humidityValue = parseInt(humidityValueElement.innerText);
+      let temperatureValue = parseInt(temperatureValueElement.innerText);
+
+      temperatureIncreaseButton.addEventListener("click", function () {
+        if (temperatureValue < 40) {
+        temperatureValue += 1;
+        updateTemperatureValue();}
+      });
+      increaseButton.addEventListener("click", function () {
+        if (humidityValue < 100) {
+          humidityValue += 1;
+          updateHumidityValue();
+        }
+
+      });
+      temperatureDecreaseButton.addEventListener("click", function () {
+        if (temperatureValue > 10) {
+        temperatureValue -= 1;
+        updateTemperatureValue();
+        }
+      });
+
+      decreaseButton.addEventListener("click", function () {
+        if (humidityValue > 0) {
+          humidityValue -= 1;
+          updateHumidityValue();
+        }
+      });
+
+      function updateTemperatureValue() {
+        temperatureValueElement.innerText = temperatureValue;
+      }
+      function updateHumidityValue() {
+        humidityValueElement.innerText = humidityValue;
+      }
+
     });
   } else if (hash === 'notification') {
     loadContent('assets/blocks/notification.html').then(content => {
