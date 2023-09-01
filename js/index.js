@@ -1,19 +1,46 @@
-
-
 function loadContent(url) {
   return fetch(url)
     .then(response => response.text())
     .catch(error => console.error('Error loading content:', error));
 }
+function authorization() {
+  const contentDiv = $('#content');
+  const navbar = document.getElementById('navbar');
+  navbar.style.display = 'none';
+  loadContent('assets/blocks/login.html').then(content => {
+    contentDiv.html(content);
+
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const response = await fetch('http://192.168.216.104:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      if (response.status === 200) {
+        navbar.style.display = 'block';
+        
+        handleHashChange();
+      }
+      else {
+        alert('Ошибка авторизации. Проверьте имя пользователя и пароль.');
+      }
+    });
+  });
+}
+
 
 function handleHashChange() {
   const contentDiv = $('#content');
   const hash = window.location.hash.substr(1).trim(); // Убираем пробелы из хеша
-
   if (hash === 'home') {
     loadContent('assets/blocks/home.html').then(content => {
-
       contentDiv.html(content);
+      //----------------------------------------------------------------------------
       const ctx = document.getElementById('myChart');
       new Chart(ctx, {
         type: 'bar',
@@ -45,6 +72,7 @@ function handleHashChange() {
           }
         }
       });
+      //----------------------------------------------------------------------------
       const brightnessSlider = document.getElementById('brightness-slider');
       const heartCenter = document.querySelector('.cls-1.center');
       const brightnessValue = brightnessSlider.value / 100;
@@ -59,6 +87,7 @@ function handleHashChange() {
         heartCenter.style.filter = `url(#glow)`;
         heartCenter.style.fill = yellowColor;
       });
+      //----------------------------------------------------------------------------
       const humidityValueElement = document.getElementById("humidityValue");
       const increaseButton = document.getElementById("increaseButton");
       const decreaseButton = document.getElementById("decreaseButton");
@@ -71,8 +100,9 @@ function handleHashChange() {
 
       temperatureIncreaseButton.addEventListener("click", function () {
         if (temperatureValue < 40) {
-        temperatureValue += 1;
-        updateTemperatureValue();}
+          temperatureValue += 1;
+          updateTemperatureValue();
+        }
       });
       increaseButton.addEventListener("click", function () {
         if (humidityValue < 100) {
@@ -83,8 +113,8 @@ function handleHashChange() {
       });
       temperatureDecreaseButton.addEventListener("click", function () {
         if (temperatureValue > 10) {
-        temperatureValue -= 1;
-        updateTemperatureValue();
+          temperatureValue -= 1;
+          updateTemperatureValue();
         }
       });
 
@@ -103,6 +133,9 @@ function handleHashChange() {
       }
 
     });
+
+    //----------------------------------------------------------------------------
+
   } else if (hash === 'notification') {
     loadContent('assets/blocks/notification.html').then(content => {
       contentDiv.html(content);
@@ -130,7 +163,12 @@ function handleHashChange() {
   else {
     contentDiv.html('Page not found');
   }
+
+
 }
+
+
+//----------------------------------------------------------------------------
 
 const nav_items = document.querySelectorAll('.navigation__menu-item')
 nav_items.forEach((item) => {
@@ -142,10 +180,12 @@ nav_items.forEach((item) => {
   });
 });
 
+//----------------------------------------------------------------------------
+
 $(window).on('hashchange', handleHashChange);
 
 $(window).on('DOMContentLoaded', () => {
-  handleHashChange();
+  authorization();
 });
 
 // function updateTime() {
@@ -166,3 +206,8 @@ $(window).on('DOMContentLoaded', () => {
 // setInterval(updateTime, 1000);
 
 // Chart
+
+
+
+
+
