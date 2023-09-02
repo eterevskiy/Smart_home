@@ -14,7 +14,7 @@ function authorization() {
       e.preventDefault();
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
-      const response = await fetch('http://192.168.216.104:3000/login', {
+      const response = await fetch('/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

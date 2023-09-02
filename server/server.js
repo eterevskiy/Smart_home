@@ -6,9 +6,7 @@ const cors = require('cors');
 
 app.use(cors());
 // app.use(cors({ origin:'http://127.0.0.1:5500'}));
-const corsOptions = {
-    origin: ['http://127.0.0.1', 'http://example2.com'],
-};
+
 const authRoutes = require('./routes/auth');
 
 app.use(express.json());
